@@ -12,23 +12,40 @@ public class Main {
 
         // task ProductList & Recipes
 
-        Product milk = new Product("Молоко", 89.99, 1.0);
-        Product bananas = new Product("Бананы", 70.00, 1.5);
-        Product bread = new Product("Хлеб", 39.50, 0.3);
-        Product eggs = new Product("Яйца", 109.99, 0.5);
-        Product cheese = new Product("Сыр", 210.00, 0.3);
-        Product butter = new Product("Масло сливочное", 200.50, 0.2);
+        Product milk = new Product("Молоко", 89.99, 1);
+        Product bananas = new Product("Бананы", 70.00, 5);
+        Product bread = new Product("Хлеб", 39.50, 3);
+        Product eggs = new Product("Яйца", 109.99, 5);
+        Product cheese = new Product("Сыр", 210.00, 2);
+        Product butter = new Product("Масло сливочное", 200.50, 1);
 
 
-        Recipe omelette = new Recipe(List.of(milk, butter, eggs), "Омлет");
-        Recipe milkshake = new Recipe(List.of(milk, bananas), "Банановый милкшейк");
-        Recipe sandwich = new Recipe(List.of(bread, cheese), "Бутерброд с сыром");
-        Recipe omelet = new Recipe(List.of(eggs, milk), "Омлет");
-
-        recipes.add(omelette);
-        recipes.add(milkshake);
-        recipes.add(sandwich);
+//        Recipe omelette = new Recipe(List.of(milk, butter, eggs), "Омлет");
+//        Recipe milkshake = new Recipe(List.of(milk, bananas), "Банановый милкшейк");
+//        Recipe sandwich = new Recipe(List.of(bread, cheese), "Бутерброд с сыром");
+//        Recipe omelet = new Recipe(List.of(eggs, milk), "Омлет");
+//
+//        recipes.add(omelette);
+//        recipes.add(milkshake);
+//        recipes.add(sandwich);
 //        addRecipe(omelet);
+
+        HashMap<Product, Integer> omeletteRecipe = new HashMap<>();
+        omeletteRecipe.put(milk, 1);
+        omeletteRecipe.put(eggs, 2);
+        omeletteRecipe.put(butter, 1);
+
+        HashMap<Product, Integer> milkshakeRecipe = new HashMap<>();
+        milkshakeRecipe.put(milk, 2);
+        milkshakeRecipe.put(bananas, 2);
+
+        HashMap<Product, Integer> sandwichRecipe = new HashMap<>();
+        sandwichRecipe.put(bread, 1);
+        sandwichRecipe.put(cheese, 1);
+
+        System.out.println(getTotalProductsCost(omeletteRecipe));
+        System.out.println(getTotalProductsCost(milkshakeRecipe));
+        System.out.println(getTotalProductsCost(sandwichRecipe));
 
         //task Passport
 
@@ -49,6 +66,15 @@ public class Main {
         System.out.println(findPassport("4515879463"));
         addPassport(vova, passports);
         System.out.println(passports);
+
+
+    }
+    public static double getTotalProductsCost(HashMap<Product, Integer> map) {
+        double cost = 0;
+        for (Map.Entry<Product, Integer> entry : map.entrySet()) {
+          cost += entry.getKey().getPrice() * entry.getValue();
+        }
+        return cost;
     }
 
 
@@ -91,10 +117,10 @@ public class Main {
         return null;
     }
 
-    public static void addPassport(Passport passport, Set<Passport> set){
+    public static void addPassport(Passport passport, Set<Passport> set) {
         Iterator<Passport> iterator = set.iterator();
         while (iterator.hasNext()) {
-            if (iterator.next().getNumber().equals(passport.getNumber())){
+            if (iterator.next().getNumber().equals(passport.getNumber())) {
                 iterator.remove();
             }
         }
@@ -102,7 +128,7 @@ public class Main {
 
     }
 
-    }
+}
 
 
 

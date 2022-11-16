@@ -2,9 +2,9 @@ import java.util.List;
 import java.util.Objects;
 
 public final class Recipe {
-    private List<Product> products;
-    private double totalCost;
-    private String name;
+    private final List<Product> products;
+    private int totalCost;
+    private final String name;
 
     public Recipe(List<Product> products, int totalCost, String name) {
         this.products = products;
@@ -21,7 +21,7 @@ public final class Recipe {
         return products;
     }
 
-    public double getTotalCost() {
+    public int getTotalCost() {
         for (int i = 0; i < (products.size() + 1); i++) {
             totalCost += products.get(i).getPrice();
         }
@@ -45,4 +45,6 @@ public final class Recipe {
     public int hashCode() {
         return Objects.hash(products, totalCost, name);
     }
+
+
 }

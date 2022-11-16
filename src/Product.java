@@ -3,13 +3,16 @@ import java.util.Objects;
 public class Product {
     private final String name;
     private double price;
-    private double quantity;
+    private int quantity;
     private boolean isBought;
 
-    public Product(String name, double price, double quantity) {
+    public Product(String name, double price, Integer quantity) {
         this.name = name;
         this.price = price;
-        this.quantity = quantity;
+        if(quantity == (null) || quantity <= 0) {
+            this.quantity = 1;
+        } else {
+        this.quantity = quantity;}
         this.isBought = false;
     }
 
@@ -35,7 +38,7 @@ public class Product {
         this.price = price;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
