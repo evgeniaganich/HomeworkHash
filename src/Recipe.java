@@ -1,31 +1,32 @@
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public final class Recipe {
-    private final List<Product> products;
-    private int totalCost;
+    private static HashMap<Product, Integer> products;
     private final String name;
 
-    public Recipe(List<Product> products, int totalCost, String name) {
-        this.products = products;
-        this.totalCost = totalCost;
+    public Recipe(HashMap<Product, Integer> products, String name) {
+        for (Integer value : products.values()) {
+            if (value == null) {
+                value = 1;
+            }
+        }
+        Recipe.products = products;
         this.name = name;
     }
 
-    public Recipe(List<Product> products, String name) {
-        this.products = products;
-        this.name = name;
-    }
 
-    public List<Product> getProducts() {
+    public HashMap<Product, Integer> getProducts() {
         return products;
     }
 
-    public int getTotalCost() {
-        for (int i = 0; i < (products.size() + 1); i++) {
-            totalCost += products.get(i).getPrice();
+    public static double getTotalCost(HashMap<Product, Integer> map) {
+        double cost = 0;
+        for (Map.Entry<Product, Integer> entry : map.entrySet()) {
+            cost += entry.getKey().getPrice() * entry.getValue();
         }
-        return totalCost;
+        return cost;
     }
 
 
@@ -43,7 +44,7 @@ public final class Recipe {
 
     @Override
     public int hashCode() {
-        return Objects.hash(products, totalCost, name);
+        return Objects.hash(products, name);
     }
 
 

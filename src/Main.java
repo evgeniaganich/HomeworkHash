@@ -43,9 +43,10 @@ public class Main {
         sandwichRecipe.put(bread, 1);
         sandwichRecipe.put(cheese, 1);
 
-        System.out.println(getTotalProductsCost(omeletteRecipe));
-        System.out.println(getTotalProductsCost(milkshakeRecipe));
-        System.out.println(getTotalProductsCost(sandwichRecipe));
+        System.out.println(Recipe.getTotalCost(omeletteRecipe));
+        System.out.println(Recipe.getTotalCost(milkshakeRecipe));
+        System.out.println(Recipe.getTotalCost(sandwichRecipe));
+        
 
         //task Passport
 
@@ -68,13 +69,6 @@ public class Main {
         System.out.println(passports);
 
 
-    }
-    public static double getTotalProductsCost(HashMap<Product, Integer> map) {
-        double cost = 0;
-        for (Map.Entry<Product, Integer> entry : map.entrySet()) {
-          cost += entry.getKey().getPrice() * entry.getValue();
-        }
-        return cost;
     }
 
 
