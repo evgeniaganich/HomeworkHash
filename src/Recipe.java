@@ -44,7 +44,7 @@ public final class Recipe {
 
     @Override
     public int hashCode() {
-        return Objects.hash(products, name);
+        return Objects.hash(name);
     }
 
 

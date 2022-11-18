@@ -46,7 +46,7 @@ public class Main {
         System.out.println(Recipe.getTotalCost(omeletteRecipe));
         System.out.println(Recipe.getTotalCost(milkshakeRecipe));
         System.out.println(Recipe.getTotalCost(sandwichRecipe));
-        
+
 
         //task Passport
 
@@ -112,17 +112,14 @@ public class Main {
     }
 
     public static void addPassport(Passport passport, Set<Passport> set) {
-        Iterator<Passport> iterator = set.iterator();
-        while (iterator.hasNext()) {
-            if (iterator.next().getNumber().equals(passport.getNumber())) {
-                iterator.remove();
-            }
+        if (set.contains(passport)) {
+            set.remove(passport);
         }
         set.add(passport);
-
     }
-
 }
+
+
 
 
 

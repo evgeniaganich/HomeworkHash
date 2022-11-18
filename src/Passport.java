@@ -39,12 +39,12 @@ public class Passport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Passport passport = (Passport) o;
-        return Objects.equals(number, passport.number) && Objects.equals(name, passport.name) && Objects.equals(surname, passport.surname) && Objects.equals(patronymic, passport.patronymic) && Objects.equals(dateOfBirth, passport.dateOfBirth);
+        return Objects.equals(number, passport.number);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number, name, surname, patronymic, dateOfBirth);
+        return Objects.hash(number);
     }
 
     @Override
